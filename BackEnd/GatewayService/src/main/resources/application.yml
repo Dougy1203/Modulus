@@ -1,0 +1,37 @@
+server:
+  port: 8888
+ 
+eureka:
+  client:
+    serviceUrl:
+      #defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eureka:8761/eureka
+
+spring:
+  application:
+    name: gateway-service-sen300
+  cloud:
+    gateway:
+      routes:
+      - id: cart
+        uri: lb://SECOND-SERVICE
+        predicates:
+        - Path=/consumer/**
+
+      - id: catalog
+        uri: lb://DOTNET-API        
+        predicates:
+        - Path=/api1/**        
+        #you can now hit this api gateway via: http://localhost:8888/api1/abc
+
+      - id: checkout
+        uri: lb://DOTNET-API2
+        predicates:
+        - Path=/**
+        #you can now hit endpoint like: http://localhost:8888/test1 this somehow maps to the minimal api endpoints
+
+      - id: email
+        uri: lb://DOTNET-API2
+        predicates:
+        - Path=/api2/**
+        #you can now hit http://localhost:8888/api2

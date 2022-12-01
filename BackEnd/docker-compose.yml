@@ -1,0 +1,73 @@
+version: '3.9'
+services:
+  eureka:
+    container_name: eureka.com
+    image: steeltoeoss/eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - capstone
+  corp:
+    build: ./CorporationMicroservice
+    image: corp:1.0
+    ports:
+      - "5083"
+    networks:
+      - capstone
+    depends_on:
+      - eureka
+    deploy:
+      replicas: 2
+
+  email:
+    build: ./EmailMicroservice
+    image: email:1.0
+    ports:
+    - "5049"
+    networks:
+      - capstone
+    depends_on:
+      - eureka
+    deploy:
+      replicas: 1
+
+  mod:
+    build: ./ModuleMicroservice
+    image: mod:1.0
+    ports:
+      - "5271"
+    networks:
+      - capstone
+    depends_on:
+      - eureka
+    deploy:
+      replicas: 2
+
+  user:
+    build: ./UserMicroservice
+    image: user:1.0
+    ports:
+      - "5271"
+    networks:
+      - capstone
+    depends_on:
+      - eureka
+    deploy:
+      replicas: 2
+      
+  apigateway.c:
+    container_name: apigateway
+    build:
+      context: ./GatewayService
+      dockerfile: 2.dockerfile
+    image: apigateway:1    
+    ports:
+      - "8888:8888"
+    networks:
+      - capstone      
+    depends_on:
+      - eureka
+
+networks:
+  capstone:
+    name: "capstone"
