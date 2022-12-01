@@ -18,19 +18,19 @@ class ModulePage extends StatefulWidget {
 class _ModulePageState extends State<ModulePage> {
   List<Widget> files() {
     List<Widget> widgets = [];
-    widget.files.forEach((k,v) => widgets.add(PDFNetwork(title: k, uri: v)));
-    return widgets;
-  }
-  List<Widget> mods(){
-    List<Widget> widgets = [];
-    for(String s in widget.modules)
-    {
-      if(s.isNotEmpty){
-        widgets.add(Module(modName: s));
+    try {
+      widget.files.forEach((k, v) => widgets.add(PDFNetwork(title: k, uri: v)));
+      for (String s in widget.modules) {
+        if (s.isNotEmpty) {
+          widgets.add(Module(modName: s));
+        }
       }
+      return widgets;
+    } catch (e) {
+      return widgets;
     }
-    return widgets;
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -52,22 +52,11 @@ class _ModulePageState extends State<ModulePage> {
           titleSpacing: 2.0,
           centerTitle: true,
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: files(),
-              ),
-            ),
-            SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: mods(),
-              ),
-            ),
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: files(),
+          ),
         ),
 
       ),

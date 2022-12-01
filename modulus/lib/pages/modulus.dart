@@ -66,10 +66,8 @@ class _ModulusState extends State<Modulus> {
               ),
               const PDFNetwork(uri: 'https://www.ece.uvic.ca/~itraore/elec567-13/notes/dist-03-4.pdf', title: 'Network PDF'),
               const PDFAsset(uri: 'files/275.pdf', title: 'Asset PDF'),
-              SingleChildScrollView(
-                child: Column(
-                  children: mods(),
-                ),
+              Column(
+                children: mods(),
               ),
             ],
           ),

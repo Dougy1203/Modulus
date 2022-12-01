@@ -582,7 +582,7 @@ class _CorpSignInState extends State<CorpSignIn> {
                 onPressed: () {
                   setState(() {
                     if (userHeight == 0.0) {
-                      userHeight = 300.0;
+                      userHeight = 400.0;
                       userIcon = Icons.arrow_upward;
                     } else {
                       userHeight = 0.0;

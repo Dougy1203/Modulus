@@ -37,9 +37,11 @@ class _ModuleState extends State<Module> {
             a = a.replaceAll('"', '');
             a = a.replaceAll('{', '');
             a = a.replaceAll('}', '');
-            String key = a.substring(0, a.indexOf(':'));
-            String value = a.substring(a.indexOf(':')+1, a.length);
-            files[key] = value;
+            if(a.isNotEmpty){
+              String key = a.substring(0, a.indexOf(':'));
+              String value = a.substring(a.indexOf(':')+1, a.length);
+              files[key] = value;
+            }
           }
           // print(mods);
           // print(roles);
