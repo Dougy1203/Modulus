@@ -39,10 +39,7 @@ dependencies:
   page_transition: ^2.0.9
   http: ^0.13.5
   pdfx: ^2.3.0
-  video_player: ^2.4.7
   syncfusion_flutter_pdfviewer: ^20.3.57
-  youtube_player_flutter: ^8.1.1
-  fluttertoast: ^8.1.1
 
 dev_dependencies:
   flutter_test:
