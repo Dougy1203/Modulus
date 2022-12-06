@@ -8,6 +8,12 @@ var kSecondaryColor = Colors.blue.shade900;
 var kBackgroundColor = Colors.black45 /*Color(0xffC9B7AD)*/;
 var kTertiaryColor = Colors.grey.shade900;
 
+var kTextStyle = TextStyle(
+  color: kPrimaryColor,
+  fontWeight: FontWeight.bold,
+  fontSize: 20.0,
+);
+
 
 Future<String> apiPost(String url, Map jsonMap) async {
   HttpClient httpClient = new HttpClient();
@@ -39,6 +45,21 @@ Future<List<String>> apiGet(String url) async {
   strings = strings.replaceAll(']', '');
   List<String> stringy = strings.split(',');
   return stringy;
+}
+
+SnackBar kSnack(String content){
+  return SnackBar(
+    content: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(content, style: kTextStyle),
+      ],
+    ),
+    shape: const StadiumBorder(),
+    backgroundColor: Colors.grey.shade900,
+    padding: const EdgeInsets.symmetric(horizontal: 5.0),
+
+  );
 }
 
 

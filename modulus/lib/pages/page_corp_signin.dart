@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:modulus/pages/modulus.dart';
 import 'package:modulus/pages/page_user_new.dart';
 import '../constants/constants.dart';
@@ -9,8 +10,8 @@ import 'package:http/http.dart' as http;
 import 'home.dart';
 
 class CorpSignIn extends StatefulWidget {
-  const CorpSignIn({super.key, required this.corpName});
-  final String corpName;
+  CorpSignIn({super.key, required this.corpName});
+  String corpName;
   @override
   State<CorpSignIn> createState() => _CorpSignInState();
 }
@@ -27,6 +28,38 @@ class _CorpSignInState extends State<CorpSignIn> {
   final modName2Controller = TextEditingController();
   final userController = TextEditingController();
   final roleController = TextEditingController();
+
+  void clear() {
+    setState(() {
+      nameController.clear();
+      emailController.clear();
+      passController.clear();
+      pass2Controller.clear();
+      modNameController.clear();
+      fileController.clear();
+      fileTitleController.clear();
+      roleNameController.clear();
+      modName2Controller.clear();
+      userController.clear();
+      roleController.clear();
+      nameHeight = 0.0;
+      emailHeight = 0.0;
+      passHeight = 0.0;
+      modHeight = 0.0;
+      fileHeight = 0.0;
+      m2mHeight = 0.0;
+      userHeight = 0.0;
+      roleHeight = 0.0;
+      nameIcon = Icons.arrow_downward;
+      emailIcon = Icons.arrow_downward;
+      passIcon = Icons.arrow_downward;
+      modIcon = Icons.arrow_downward;
+      fileIcon = Icons.arrow_downward;
+      m2mIcon = Icons.arrow_downward;
+      userIcon = Icons.arrow_downward;
+      roleIcon = Icons.arrow_downward;
+    });
+  }
 
   var nameHeight = 0.0;
   var emailHeight = 0.0;
@@ -147,10 +180,15 @@ class _CorpSignInState extends State<CorpSignIn> {
                                 'http://10.0.2.2:8888/corporationmicroservice/corp/updateCorpName'),
                             body: map);
                         print(res.body);
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(builder: (context) => Home()),
-                            (route) => false);
+                        // Navigator.pushAndRemoveUntil(
+                        //     context,
+                        //     MaterialPageRoute(builder: (context) => Home()),
+                        //     (route) => false);
+                        if (res.statusCode == 200) {
+                          widget.corpName = nameController.text;
+                        }
+                        ScaffoldMessenger.of(context).showSnackBar(kSnack('Name Updated'));
+                        clear();
                       },
                     ),
                   ],
@@ -226,10 +264,8 @@ class _CorpSignInState extends State<CorpSignIn> {
                                 'http://10.0.2.2:8888/corporationmicroservice/corp/updateCorpEmail'),
                             body: map);
                         print(res.body);
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(builder: (context) => Home()),
-                            (route) => false);
+                        ScaffoldMessenger.of(context).showSnackBar(kSnack('Email Updated'));
+                        clear();
                       },
                     ),
                   ],
@@ -304,10 +340,8 @@ class _CorpSignInState extends State<CorpSignIn> {
                             Uri.parse(
                                 'http://10.0.2.2:8888/corporationmicroservice/corp/updateCorpPassword'),
                             body: map);
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(builder: (context) => Home()),
-                            (route) => false);
+                        ScaffoldMessenger.of(context).showSnackBar(kSnack('Password Updated'));
+                        clear();
                       },
                     ),
                   ],
@@ -392,11 +426,10 @@ class _CorpSignInState extends State<CorpSignIn> {
                         if (res.statusCode == 200) {
                           print('Module Created');
                         }
+                        print(res2.statusCode);
                         if (res2.statusCode == 200) {
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(builder: (context) => Home()),
-                              (route) => false);
+                          ScaffoldMessenger.of(context).showSnackBar(kSnack('Module Added'));
+                          clear();
                         }
                       },
                     ),
@@ -479,10 +512,8 @@ class _CorpSignInState extends State<CorpSignIn> {
                                 'http://10.0.2.2:8888/modulemicroservice/mod/addFile'),
                             body: map);
                         if (res.statusCode == 200) {
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(builder: (context) => Home()),
-                              (route) => false);
+                          ScaffoldMessenger.of(context).showSnackBar(kSnack('File Added'));
+                          clear();
                         }
                       },
                     ),
@@ -566,10 +597,8 @@ class _CorpSignInState extends State<CorpSignIn> {
                                   'http://10.0.2.2:8888/corporationmicroservice/corp/removeMod'),
                               body: map2);
                           if (res2.statusCode == 200) {
-                            Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(builder: (context) => Home()),
-                                (route) => false);
+                            ScaffoldMessenger.of(context).showSnackBar(kSnack('Module Added'));
+                            clear();
                           }
                         }
                       },

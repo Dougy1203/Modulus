@@ -17,7 +17,7 @@ services:
     depends_on:
       - eureka
     deploy:
-      replicas: 2
+      replicas: 1
 
   email:
     build: ./EmailMicroservice
@@ -41,7 +41,7 @@ services:
     depends_on:
       - eureka
     deploy:
-      replicas: 2
+      replicas: 1
 
   user:
     build: ./UserMicroservice
@@ -53,7 +53,7 @@ services:
     depends_on:
       - eureka
     deploy:
-      replicas: 2
+      replicas: 1
       
   apigateway.c:
     container_name: apigateway
