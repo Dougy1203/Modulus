@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:modulus/pages/modulus.dart';
 import 'package:modulus/pages/page_user_new.dart';
 import '../constants/constants.dart';
@@ -7,8 +6,6 @@ import 'package:modulus/custom_widgets/main_image.dart';
 import 'package:modulus/custom_widgets/my_text_field.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
-import 'package:encrypt/encrypt.dart';
-import 'package:pointycastle/asymmetric/api.dart';
 
 import 'home.dart';
 
