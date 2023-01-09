@@ -124,8 +124,17 @@ class _SignUpState extends State<SignUp> {
                   }
                   final res = await fetchAlbum();
                   print(res);
-                  if (res == 'UserCreated') {
 
+                  if (res == 'UserCreated') {
+                    Map bodyMap = <String, dynamic>{};
+                    bodyMap['from'] = 'CAPSTONE';
+                    bodyMap['to'] = userController.text;
+                    bodyMap['toEmail'] = emailController.text;
+                    bodyMap['subject'] = 'User Registration';
+                    bodyMap['content'] = 'Your email has been used to make a Modulus Account with ${corporateController.text}';
+                    await http.post(Uri.parse('http://10.0.2.2:8888/emailmicroservice/email/sendEmail'), body: bodyMap);
+                    Navigator.pushReplacement(
+                        context, MaterialPageRoute(builder: (context) => Home()));
                   }
 
                   // Navigator.popAndPushNamed(
