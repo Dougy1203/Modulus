@@ -28,7 +28,7 @@ Future<String> RSADecrypt(String encrypted) async{
 }
 
 var kPrimaryColor = Colors.green.shade900 /*Color(0xff94A89A)*/;
-var kSecondaryColor = Colors.blue.shade900;
+var kSecondaryColor = Colors.white;
 var kBackgroundColor = Colors.black45 /*Color(0xffC9B7AD)*/;
 var kTertiaryColor = Colors.grey.shade900;
 
