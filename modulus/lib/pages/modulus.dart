@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_youtube_view/flutter_youtube_view.dart';
+import 'package:modulus/custom_widgets/YoutubeDefaultWidget.dart';
 import 'package:modulus/pages/modulus.dart';
 import 'package:modulus/pages/page_user_new.dart';
 import '../constants/constants.dart';
@@ -66,6 +68,8 @@ class _ModulusState extends State<Modulus> {
               ),
               const PDFNetwork(uri: 'https://www.ece.uvic.ca/~itraore/elec567-13/notes/dist-03-4.pdf', title: 'Network PDF'),
               const PDFAsset(uri: 'files/275.pdf', title: 'Asset PDF'),
+              // const YoutubeDefaultWidget(videoId:'FjHGZj2IjBk'),
+              const YoutubeDefaultWidget(videoId:'OeHLHNKQCXA'),
               Column(
                 children: mods(),
               ),
