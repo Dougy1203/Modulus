@@ -156,10 +156,10 @@ This LMS Project was built to gain experience utilizing Service Oriented Archite
 2. Go into the cloned repositories folder.
 3. Navigate to the BackEnd Folder
 4. Open 'appsettings.json' in each Microservice and enter your Mongo Connection String where prompted
-4. Open the Terminal of your choosing and run 'docker compose up -d' to deploy the Microservices in a Docker Environment
-5. Open Android Studio and Navigate to Device Manager
-6. Create a Device and start the Android Emulator
-7. With the Project open as a Flutter Project in Android Studio, select the Emulator you've just created and run the application.
+5. Open the Terminal of your choosing and run 'docker compose up -d' to deploy the Microservices in a Docker Environment
+6. Open Android Studio and Navigate to Device Manager
+7. Create a Device and start the Android Emulator
+8. With the Project open as a Flutter Project in Android Studio, select the Emulator you've just created and run the application.
 <br>
 <br>
 
