@@ -13,5 +13,3 @@ docker push liamd1203/mod_microservice
 docker push liamd1203/user_microservice
 docker push liamd1203/eureka_microservice
 docker push liamd1203/gateway_microservice
-
-az login
